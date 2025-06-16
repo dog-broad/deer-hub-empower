@@ -1,0 +1,63 @@
+
+[
+  {
+    "msg": "🎉 Welcome to the new DEER Hub platform! Explore all the enhanced features and improved user experience.",
+    "date": "2025-06-16",
+    "priority": "high",
+    "category": "platform"
+  },
+  {
+    "msg": "📅 Monthly all-hands meeting scheduled for Friday, June 20th at 3:00 PM in Conference Room A. Join us for Q2 updates.",
+    "date": "2025-06-15",
+    "priority": "medium",
+    "category": "meeting"
+  },
+  {
+    "msg": "🏖️ Summer vacation policy updates are now available in the HR portal. New flexible time-off options added.",
+    "date": "2025-06-14",
+    "priority": "medium",
+    "category": "hr"
+  },
+  {
+    "msg": "🔒 Security reminder: Please update your passwords and enable two-factor authentication by end of week.",
+    "date": "2025-06-13",
+    "priority": "high",
+    "category": "security"
+  },
+  {
+    "msg": "🎯 Q2 performance reviews begin next week. Check your calendar for scheduled one-on-one meetings with managers.",
+    "date": "2025-06-12",
+    "priority": "medium",
+    "category": "hr"
+  },
+  {
+    "msg": "☕ New premium coffee machine installed in the break room Level 3. Enjoy artisan blends and specialty drinks!",
+    "date": "2025-06-11",
+    "priority": "low",
+    "category": "facilities"
+  },
+  {
+    "msg": "📚 Professional development budget increased by 25% for all employees. Submit your training requests via HR portal.",
+    "date": "2025-06-10",
+    "priority": "high",
+    "category": "development"
+  },
+  {
+    "msg": "🌟 Employee spotlight: Congratulations to Sarah Chen for completing her certification in Data Analytics!",
+    "date": "2025-06-09",
+    "priority": "low",
+    "category": "recognition"
+  },
+  {
+    "msg": "📊 New analytics dashboard now available for team leads. Access real-time performance metrics and insights.",
+    "date": "2025-06-08",
+    "priority": "medium",
+    "category": "tools"
+  },
+  {
+    "msg": "🎪 Company picnic scheduled for Saturday, July 15th at Riverside Park. Save the date for food, games, and fun!",
+    "date": "2025-06-07",
+    "priority": "medium",
+    "category": "event"
+  }
+]
