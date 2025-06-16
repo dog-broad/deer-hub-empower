@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Upload - DEER Hub</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Component -->
+    <div id="navbar-container"></div>
+    
+    <!-- Main Content -->
+    <main class="upload-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Page Header -->
+                    <div class="page-header text-center mb-5">
+                        <div class="page-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h1 class="page-title">Document Hub</h1>
+                        <p class="page-subtitle">Manage team resources and shared documents</p>
+                    </div>
+                    
+                    <!-- Upload Form -->
+                    <div class="upload-form-container mb-5">
+                        <h3 class="section-title mb-4">
+                            <i class="fas fa-plus-circle me-2"></i>Upload New Document
+                        </h3>
+                        
+                        <form id="uploadForm" class="needs-validation" novalidate>
+                            <!-- File Upload Area -->
+                            <div class="upload-area mb-4" id="uploadArea">
+                                <div class="upload-content">
+                                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                    <h4>Drag & Drop Files Here</h4>
+                                    <p>or <button type="button" class="btn btn-link p-0" id="browseBtn">browse files</button></p>
+                                    <input type="file" id="fileInput" multiple hidden accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.jpg,.jpeg,.png,.gif">
+                                    <small class="text-muted">Supported: PDF, DOC, PPT, XLS, Images (Max 10MB per file)</small>
+                                </div>
+                            </div>
+                            
+                            <!-- File List -->
+                            <div id="fileList" class="file-list mb-4" style="display: none;">
+                                <h5>Selected Files:</h5>
+                                <div id="fileItems"></div>
+                            </div>
+                            
+                            <div class="row">
+                                <!-- Document Title -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="docTitle" class="form-label">
+                                        <i class="fas fa-file-alt me-2"></i>Document Title
+                                    </label>
+                                    <input type="text" class="form-control glass-input" id="docTitle" placeholder="Enter document title" required>
+                                    <div class="invalid-feedback">Please provide a document title.</div>
+                                </div>
+                                
+                                <!-- Category -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="category" class="form-label">
+                                        <i class="fas fa-tags me-2"></i>Category
+                                    </label>
+                                    <select class="form-select glass-input" id="category" required>
+                                        <option value="">Select category</option>
+                                        <option value="policies">Policies & Procedures</option>
+                                        <option value="training">Training Materials</option>
+                                        <option value="templates">Templates & Forms</option>
+                                        <option value="reports">Reports & Analytics</option>
+                                        <option value="announcements">Announcements</option>
+                                        <option value="hr">HR Resources</option>
+                                        <option value="it">IT Documentation</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <div class="invalid-feedback">Please select a category.</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <div class="mb-3">
+                                <label for="description" class="form-label">
+                                    <i class="fas fa-align-left me-2"></i>Description
+                                </label>
+                                <textarea class="form-control glass-input" id="description" rows="3" placeholder="Brief description of the document..." required></textarea>
+                                <div class="invalid-feedback">Please provide a description.</div>
+                            </div>
+                            
+                            <div class="row">
+                                <!-- Access Level -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="accessLevel" class="form-label">
+                                        <i class="fas fa-lock me-2"></i>Access Level
+                                    </label>
+                                    <select class="form-select glass-input" id="accessLevel" required>
+                                        <option value="public">Public (All Employees)</option>
+                                        <option value="managers">Managers Only</option>
+                                        <option value="department">Department Only</option>
+                                        <option value="confidential">Confidential</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Tags -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="tags" class="form-label">
+                                        <i class="fas fa-hashtag me-2"></i>Tags
+                                    </label>
+                                    <input type="text" class="form-control glass-input" id="tags" placeholder="e.g., policy, training, urgent">
+                                    <div class="form-text">Separate tags with commas</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Version Control -->
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="versionControl" checked>
+                                    <label class="form-check-label" for="versionControl">
+                                        Enable version control for this document
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Upload Progress -->
+                            <div id="uploadProgress" class="upload-progress mb-4" style="display: none;">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Uploading...</span>
+                                    <span id="progressPercent">0%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="progressBar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="d-flex gap-3 justify-content-end">
+                                <button type="button" class="btn btn-outline-light btn-lg" id="clearFormBtn">
+                                    <i class="fas fa-times me-2"></i>Clear Form
+                                </button>
+                                <button type="submit" class="btn btn-primary-custom btn-lg" id="uploadBtn">
+                                    <i class="fas fa-upload me-2"></i>Upload Documents
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="upload-sidebar">
+                        <!-- Recent Uploads -->
+                        <div class="info-card mb-4">
+                            <h5 class="info-title">
+                                <i class="fas fa-clock me-2"></i>Recent Uploads
+                            </h5>
+                            <div class="recent-uploads" id="recentUploads">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- Storage Info -->
+                        <div class="info-card mb-4">
+                            <h5 class="info-title">
+                                <i class="fas fa-hdd me-2"></i>Storage Usage
+                            </h5>
+                            <div class="storage-info">
+                                <div class="storage-progress mb-2">
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 68%"></div>
+                                    </div>
+                                </div>
+                                <div class="storage-text">
+                                    <span>6.8 GB used of 10 GB</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Upload Guidelines -->
+                        <div class="info-card">
+                            <h5 class="info-title">
+                                <i class="fas fa-info-circle me-2"></i>Upload Guidelines
+                            </h5>
+                            <ul class="guidelines-list">
+                                <li>Maximum file size: 10MB</li>
+                                <li>Supported formats: PDF, DOC, PPT, XLS, Images</li>
+                                <li>Use descriptive file names</li>
+                                <li>Add relevant tags for searchability</li>
+                                <li>Check access levels carefully</li>
+                                <li>Version control recommended for policies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Document Library -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="document-library">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3 class="section-title">
+                                <i class="fas fa-folder-open me-2"></i>Document Library
+                            </h3>
+                            <div class="library-controls">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-outline-light active" data-view="grid">
+                                        <i class="fas fa-th"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-light" data-view="list">
+                                        <i class="fas fa-list"></i>
+                                    </button>
+                                </div>
+                                <div class="ms-3">
+                                    <input type="search" class="form-control glass-input" placeholder="Search documents..." id="searchDocs">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Document Grid -->
+                        <div class="document-grid" id="documentGrid">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer-container"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/auth.js"></script>
+    <script src="js/upload.js"></script>
+</body>
+</html>

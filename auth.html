@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register - DEER Hub</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Component -->
+    <div id="navbar-container"></div>
+    
+    <!-- Main Content -->
+    <main class="auth-section">
+        <div class="container">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-lg-5 col-md-7">
+                    <div class="auth-container">
+                        <!-- Login Form -->
+                        <div id="login-form" class="auth-form">
+                            <div class="auth-header text-center mb-4">
+                                <div class="auth-icon">
+                                    <i class="fas fa-deer"></i>
+                                </div>
+                                <h2 class="auth-title">Welcome Back</h2>
+                                <p class="auth-subtitle">Sign in to your DEER Hub account</p>
+                            </div>
+                            
+                            <form id="loginForm">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control glass-input" id="loginEmail" placeholder="name@example.com" required>
+                                    <label for="loginEmail">
+                                        <i class="fas fa-envelope me-2"></i>Email Address
+                                    </label>
+                                </div>
+                                
+                                <div class="form-floating mb-4">
+                                    <input type="password" class="form-control glass-input" id="loginPassword" placeholder="Password" required>
+                                    <label for="loginPassword">
+                                        <i class="fas fa-lock me-2"></i>Password
+                                    </label>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                                        <label class="form-check-label" for="rememberMe">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                    <a href="#" class="forgot-link">Forgot password?</a>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary-custom btn-lg w-100 mb-3">
+                                    <i class="fas fa-sign-in-alt me-2"></i>
+                                    Sign In
+                                </button>
+                                
+                                <div class="text-center">
+                                    <span class="switch-text">Don't have an account? </span>
+                                    <a href="#" id="showRegister" class="switch-link">Sign up</a>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Register Form -->
+                        <div id="register-form" class="auth-form" style="display: none;">
+                            <div class="auth-header text-center mb-4">
+                                <div class="auth-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <h2 class="auth-title">Join DEER Hub</h2>
+                                <p class="auth-subtitle">Create your account to get started</p>
+                            </div>
+                            
+                            <form id="registerForm">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control glass-input" id="registerName" placeholder="Full Name" required>
+                                    <label for="registerName">
+                                        <i class="fas fa-user me-2"></i>Full Name
+                                    </label>
+                                </div>
+                                
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control glass-input" id="registerEmail" placeholder="name@example.com" required>
+                                    <label for="registerEmail">
+                                        <i class="fas fa-envelope me-2"></i>Email Address
+                                    </label>
+                                </div>
+                                
+                                <div class="form-floating mb-3">
+                                    <select class="form-select glass-input" id="registerRole" required>
+                                        <option value="">Choose your role</option>
+                                        <option value="employee">Employee</option>
+                                        <option value="manager">Manager</option>
+                                    </select>
+                                    <label for="registerRole">
+                                        <i class="fas fa-briefcase me-2"></i>Role
+                                    </label>
+                                </div>
+                                
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control glass-input" id="registerPassword" placeholder="Password" required>
+                                    <label for="registerPassword">
+                                        <i class="fas fa-lock me-2"></i>Password
+                                    </label>
+                                </div>
+                                
+                                <div class="form-floating mb-4">
+                                    <input type="password" class="form-control glass-input" id="confirmPassword" placeholder="Confirm Password" required>
+                                    <label for="confirmPassword">
+                                        <i class="fas fa-lock me-2"></i>Confirm Password
+                                    </label>
+                                </div>
+                                
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                    <label class="form-check-label" for="agreeTerms">
+                                        I agree to the <a href="#" class="switch-link">Terms of Service</a> and <a href="#" class="switch-link">Privacy Policy</a>
+                                    </label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary-custom btn-lg w-100 mb-3">
+                                    <i class="fas fa-user-plus me-2"></i>
+                                    Create Account
+                                </button>
+                                
+                                <div class="text-center">
+                                    <span class="switch-text">Already have an account? </span>
+                                    <a href="#" id="showLogin" class="switch-link">Sign in</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer-container"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/auth.js"></script>
+    <script src="js/auth-forms.js"></script>
+</body>
+</html>
